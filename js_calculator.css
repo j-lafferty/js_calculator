@@ -44,7 +44,7 @@
     font-size: 6vh;
     overflow: hidden;
 }
-#display-text {
+#display-scroll {
     position: relative;
     top: 0;
     bottom: 0;
@@ -54,7 +54,7 @@
     -ms-overflow-style: none;
     overflow: -moz-scrollbars-none;
 }
-#display-text::-webkit-scrollbar {
+#display-scroll::-webkit-scrollbar {
     width: 0px;
 }
 .row {
