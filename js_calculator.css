@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#main {
+    height: 100vh;
+    background-color: #d1c59c;
+    display: flex;
+}
+#container {
+    position: relative;
+    height: 53vh;
+    width: 33vh;
+    margin-left: auto; 
+    margin-right: auto;
+    margin-top: 60px;
+    display: flex;
+    flex-flow: column;
+    background-color: rgb(158, 42, 10);
+    border-radius: 2vh;
+    box-shadow: .8vh .8vh 1vh .8vh rgba(0, 0, 0, 0.342);
+}
+#calc {
+    position: relative;
+    margin: auto;
+    height: 50vh;;
+    width: 30vh;
+    background-color: black;
+    display: flex;
+    flex-flow: column;
+}
+.display {
+    position: relative;
+    margin: 1vh;
+    height: 4vh;;
+    width: auto;
+    padding: 2vh 1vh 3vh 1vh;
+    background-color: black;
+    display: inline-block;
+    text-align: right;
+    color: white;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 3.5em;
+}
+.row {
+    position: relative;
+    margin: 1vh .25vh .25vh 1.5vh;
+    height: 100%;
+    width: 100%;
+    display: inline-block;
+    flex-flow: column;
+}
+.btn {
+    padding: 3% 5.5%;
+    margin: 0vh .5vh;
+    text-align: center;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-size: 1.75em;
+    border-radius: 100vh;
+}
+.modify {
+    background-color: rgb(189, 188, 186);
+    color: black;
+}
+.operator {
+    background-color: orange;
+    color: white;
+}
+.digit {
+    background-color: rgb(24, 23, 23);
+    color: white;
+}
+#zero {
+    padding: 2.5% 17%;
+}
