@@ -42,12 +42,12 @@
     display: inline-block;
     text-align: right;
     color: white;
-    font-size: 3vw;
+    font-size: 6vh;
 }
 .row {
     display: flex;
     position: relative;
-    margin-left: .55vh;
+    margin-left: .7vh;
     width: 96%;
 }
 .btn {
@@ -57,7 +57,7 @@
     margin: .45vh;
     text-align: center;
     font-family: "Lucida Console", Monaco, monospace;
-    font-size: 1.2vw;
+    font-size: 2.25vh;
     border-radius: 100vh;
 }
 .modify {
