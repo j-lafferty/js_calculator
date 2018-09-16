@@ -2,6 +2,7 @@ var op;
 var num1;
 var num2;
 
+var init;
 var x;
 
 function add() {
@@ -37,10 +38,24 @@ function operator(op, num1, num2) {
             break;
     };
 };
+
+function defaultState() {
+    init = 0;
+    document.getElementById("display-scroll").innerHTML = init;
+};
 //clear input
-function clear(button) {
-    x = button.value;
-    document.getElementById("display-scroll").innerHTML = x;
+function clear1() {
+    x = "";
+    op = "";
+    init = 0;
+    document.getElementById("display-scroll").innerHTML = init;
+};
+//clear initial value when digit is pressed
+function clearInit() {
+    if (init === 0) {
+            init = "";
+            document.getElementById("display-scroll").innerHTML = init;
+    };
 };
 //change input number to negative or positive
 function plusmn(button) {
@@ -52,16 +67,17 @@ function percent(button) {
 };
 
 function operation(button) {
-    x = button.value;
-    document.getElementById("display-scroll").innerHTML += x;
+    op = button.value;
 };
 
 function digit(button) {
+    clearInit();
     x = button.value;
     document.getElementById("display-scroll").innerHTML += x;
 };
 
 function period(button) {
+    clearInit();
     x = button.value;
     document.getElementById("display-scroll").innerHTML += x;
 };

@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-
         <link rel="stylesheet" href="js_calculator.css">
     </head>
-    <body>
+    <body onload="defaultState()">
         <div id="main">
             <div id="container">
                 <div id="calc">
@@ -12,7 +11,7 @@
                         <div id="display-scroll"></div>
                     </div>
                     <div class="row">
-                        <input type="button" class="btn modify" onclick="clear(0)" value="C">
+                        <input type="button" class="btn modify" onclick="clear1()" value="C">
                         <input type="button" class="btn modify" onclick="plusmn(this)" value="&plusmn">
                         <input type="button" class="btn modify" onclick="percent(this)" value="%">
                         <input type="button" class="btn operator" onclick="operation(this)" value="&divide">
@@ -38,7 +37,7 @@
                     <div class="row">
                         <input type="button" class="btn digit" id="zero" onclick="digit(this)" value="0">
                         <input type="button" class="btn digit" onclick="period(this)" value=".">
-                        <input type="button" class="btn operator" onclick="equals(this)" value="=">
+                        <input type="button" class="btn operator" onclick="operator(op, num1, num2)" value="=">
                     </div>
                 </div>
             </div>
