@@ -1,31 +1,27 @@
 var init;
 
-var userOp = "";
+var userOp;
 var userY;
 var userX;
-var output;
+var result;
 
 function add(num1, num2) {
-    userX = num1 + num2;
-    return;
+    result = num1 + num2;
 };
 
 function subtract(num1, num2) {
-    userX = num1 - num2;
-    return;
+    result = num1 - num2;
 };
 
 function multiply(num1, num2) {
-    userX = num1 * num2;
-    return;
+    result = num1 * num2;
 };
 
 function divide(num1, num2) {
-    userX = num1 / num2;
-    return;
+    result = num1 / num2;
 };
 
-function operator(op, num1, num2) {
+function operate(op, num1, num2) {
     let operator = op;
     switch (operator) {
         case "+":
@@ -41,7 +37,6 @@ function operator(op, num1, num2) {
             divide(num1, num2);
             break;
     };
-    return;
 };
 //default display on page load
 function defaultState() {
@@ -50,20 +45,21 @@ function defaultState() {
 };
 //clear all input
 function clear1() {
-    userX = "";
-    userOp = "";
-    userY = "";
+    userX = null;
+    userOp = null;
+    userY = null;
+    result = null;
     init = 0;
     document.getElementById("display-scroll").innerHTML = init;
 };
 //clear default display when digit is pressed
 function clearInit() {
-    if (init === 0) {
-            init = "";
+    if (init == 0) {
+            init = null;
             document.getElementById("display-scroll").innerHTML = init;
     };
 };
-//use to remove oporator sign once new digit has been selected
+//use to remove oporator sign in display once new digit has been selected
 function clearOperator() {
     document.getElementById("display-scroll").innerHTML = userX;
 };
@@ -77,31 +73,39 @@ function percent(button) {
 };
 
 function operation(button) {
-    userY = userX;
-    userX = "";
+    userY = userX * 1;
+    userX = null;
     userOp = button.value;
     document.getElementById("display-scroll").innerHTML = userOp;
 };
 
 function digit(button) {
-    clearInit();
-    userX = button.value;
-    if (userOp !== undefined) {
+    if (userX === undefined || userX === null) {
+        userX = button.value;
+    } else {
+        userX += button.value;
+    }
+    if (init === 0) {
+        clearInit();
+    };
+    if (userOp === undefined || userOp === null) {
+        document.getElementById("display-scroll").innerHTML = userX;
+    } else {
         document.getElementsByClassName("digit").addEventListener("click", clearOperator());
     };
-    document.getElementById("display-scroll").innerHTML += userX;
 };
 
 function period(button) {
-    clearInit();
+    if (init === 0) {
+        clearInit();
+    }; 
     userX = button.value;
     document.getElementById("display-scroll").innerHTML += userX;
 };
 
 function equals() {
-    let op = userOp;
-    let num1 = userY;
-    let num2 = userX;
-    operator(op, num1, num2);
-    document.getElementById("display-scroll").innerHTML = output;
+    userX *= 1;
+    operate(userOp, userY, userX);
+    userX = result;
+    document.getElementById("display-scroll").innerHTML = userX;
 };
