@@ -35,7 +35,7 @@
     position: relative;
     margin: 1vh;
     height: 4vh;;
-    width: auto;
+    width: 86%;
     padding: 2vh 1vh 3vh 1vh;
     background-color: black;
     display: inline-block;
@@ -48,7 +48,7 @@
     position: relative;
     top: 0;
     bottom: 0;
-    left: 1;
+    left: 0;
     right: -17px;
     overflow-y: scroll;
     -ms-overflow-style: none;
