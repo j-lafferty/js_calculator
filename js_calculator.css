@@ -4,27 +4,27 @@
 }
 
 #main {
+    display: flex;
     height: 100vh;
     background-color: #d1c59c;
-    display: flex;
 }
 #container {
+    display: flex;
     position: relative;
-    height: 49vh;
+    height: 50.5vh;
     width: 33vh;
     margin-left: auto; 
     margin-right: auto;
-    margin-top: 60px;
-    display: flex;
-    flex-flow: column;
+    margin-top: 12vh;
     background-color: rgb(158, 42, 10);
     border-radius: 2vh;
     box-shadow: .8vh .8vh 1vh .8vh rgba(0, 0, 0, 0.342);
 }
 #calc {
+    display: flex;
     position: relative;
     margin: auto;
-    height: 46vh;;
+    height: 47.5vh;
     width: 30vh;
     background-color: black;
     display: flex;
@@ -32,6 +32,7 @@
     font-family: "Lucida Console", Monaco, monospace;
 }
 .display {
+    display: flex;
     position: relative;
     margin: 1vh;
     height: 4vh;;
@@ -44,20 +45,19 @@
     font-size: 3.5em;
 }
 .row {
+    display: flex;
     position: relative;
-    margin-top: 1vh;
-    margin-left: 1.5vh;
-    width: 100%;
-    display: inline-block;
-    flex-flow: column;
+    margin-left: .55vh;
+    width: 96%;
 }
 .btn {
-    padding: 3% 5.5%;
-    margin-right: .25vh;
-    margin-left: .25vh;
+    width: 100%;
+    height: 100%;
+    padding: 1.6vh;
+    margin: .45vh;
     text-align: center;
     font-family: "Lucida Console", Monaco, monospace;
-    font-size: 1.75em;
+    font-size: 1.25em;
     border-radius: 100vh;
 }
 .modify {
@@ -73,5 +73,5 @@
     color: white;
 }
 #zero {
-    padding: 2.5% 17%;
+    padding: 5.25% 19.5%;
 }
