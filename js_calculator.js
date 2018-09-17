@@ -56,10 +56,15 @@ function clear1() {
 };
 //clear default display when digit is pressed
 function clearInit() {
-    if (init == 0) {
-            init = null;
-            document.getElementById("display-scroll").innerHTML = init;
-    };
+    init = null;
+    document.getElementById("display-scroll").innerHTML = init;
+    
+};
+//clear result display when digit is pressed
+function clearResult() {
+    result = null;
+    userX = null;
+    document.getElementById("display-scroll").innerHTML = result;
 };
 //use to remove oporator sign in display once new digit has been selected
 function clearOperator() {
@@ -86,6 +91,9 @@ function digit(button) {
     if (init === 0) {
         clearInit();
     };
+    if (typeof result !== undefined || typeof result !== null) {
+        clearResult();
+    };
     if (userX === undefined || userX === null) {
         userX = button.value;
     } else {
@@ -109,5 +117,5 @@ function period(button) {
 function equals() {
     operate(userOp, userY, userX);
     userX = result;
-    document.getElementById("display-scroll").innerHTML = userX;
+    document.getElementById("display-scroll").innerHTML = result;
 };
