@@ -7,19 +7,19 @@ var userX;
 var result;
 
 function add(num1, num2) {
-    result = parseInt(num1) + parseInt(num2);
+    result = parseFloat(num1) + parseFloat(num2);
 };
 
 function subtract(num1, num2) {
-    result = parseInt(num1) - parseInt(num2);
+    result = parseFloat(num1) - parseFloat(num2);
 };
 
 function multiply(num1, num2) {
-    result = parseInt(num1) * parseInt(num2);
+    result = parseFloat(num1) * parseFloat(num2);
 };
 
 function divide(num1, num2) {
-    result = parseInt(num1) / parseInt(num2);
+    result = parseFloat(num1) / parseFloat(num2);
 };
 
 function operate(op, num1, num2) {
@@ -91,7 +91,7 @@ function digit(button) {
     if (init === 0) {
         clearInit();
     };
-    if (typeof result !== undefined || typeof result !== null) {
+    if (Number.isFinite(result)) {
         clearResult();
     };
     if (userX === undefined || userX === null) {
