@@ -106,12 +106,18 @@ function digit(button) {
     };
 };
 
-function period(button) {
+function decimal(button) {
     if (init === 0) {
         clearInit();
     }; 
-    userX = button.value;
-    document.getElementById("display-scroll").innerHTML += userX;
+    if (Number.isFinite(result)) {
+        clearResult();
+    };
+    if (userX === undefined || userX === null) {
+        userX = 0;
+    };
+    userX += button.value;
+    document.getElementById("display-scroll").innerHTML = userX;
 };
 
 function equals() {
