@@ -1,5 +1,6 @@
 var init;
 
+var displayOp;
 var userOp;
 var userY;
 var userX;
@@ -24,16 +25,16 @@ function divide(num1, num2) {
 function operate(op, num1, num2) {
     let operator = op;
     switch (operator) {
-        case "+":
+        case "plus":
             add(num1, num2);
             break;
-        case "-":
+        case "minus":
             subtract(num1, num2);
             break;
-        case "&times":
+        case "times":
             multiply(num1, num2);
             break;
-        case "&divide":
+        case "divide":
             divide(num1, num2);
             break;
     };
@@ -45,8 +46,9 @@ function defaultState() {
 };
 //clear all input
 function clear1() {
-    userX = null;
     userOp = null;
+    displayOp = null;
+    userX = null;
     userY = null;
     result = null;
     init = 0;
@@ -73,17 +75,18 @@ function percent(button) {
 };
 
 function operation(button) {
-    userY = userX * 1;
+    userY = userX;
     userX = null;
-    userOp = button.value;
-    document.getElementById("display-scroll").innerHTML = userOp;
+    userOp = button.id;
+    displayOp = button.value;
+    document.getElementById("display-scroll").innerHTML = displayOp;
 };
 
 function digit(button) {
     if (userX === undefined || userX === null) {
-        userX = button.value;
+        userX = parseInt(button.value);
     } else {
-        userX += button.value;
+        userX += parseInt(button.value);
     }
     if (init === 0) {
         clearInit();
@@ -104,7 +107,6 @@ function period(button) {
 };
 
 function equals() {
-    userX *= 1;
     operate(userOp, userY, userX);
     userX = result;
     document.getElementById("display-scroll").innerHTML = userX;
