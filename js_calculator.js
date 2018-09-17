@@ -7,19 +7,19 @@ var userX;
 var result;
 
 function add(num1, num2) {
-    result = num1 + num2;
+    result = parseInt(num1) + parseInt(num2);
 };
 
 function subtract(num1, num2) {
-    result = num1 - num2;
+    result = parseInt(num1) - parseInt(num2);
 };
 
 function multiply(num1, num2) {
-    result = num1 * num2;
+    result = parseInt(num1) * parseInt(num2);
 };
 
 function divide(num1, num2) {
-    result = num1 / num2;
+    result = parseInt(num1) / parseInt(num2);
 };
 
 function operate(op, num1, num2) {
@@ -83,15 +83,15 @@ function operation(button) {
 };
 
 function digit(button) {
-    if (userX === undefined || userX === null) {
-        userX = parseInt(button.value);
-    } else {
-        userX += parseInt(button.value);
-    }
     if (init === 0) {
         clearInit();
     };
-    if (userOp === undefined || userOp === null) {
+    if (userX === undefined || userX === null) {
+        userX = button.value;
+    } else {
+        userX += button.value;
+    };
+    if (displayOp === undefined || displayOp === null) {
         document.getElementById("display-scroll").innerHTML = userX;
     } else {
         document.getElementsByClassName("digit").addEventListener("click", clearOperator());
