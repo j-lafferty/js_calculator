@@ -91,8 +91,13 @@ function containsDecimal(isDecimal) {
 };
 
 //change input number to negative or positive
-function plusmn(button) {
-
+function plusmn() {
+    if (userX.charAt(0) === '-') {
+        userX = userX.substr(1);
+    } else {
+        userX = '-' + userX;
+    };
+    document.getElementById("display-scroll").innerHTML = userX;
 };
 
 //convert input number to percentage
