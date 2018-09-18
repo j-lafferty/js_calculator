@@ -2,6 +2,7 @@ var init;
 
 var displayOp;
 var userOp;
+var percentCheck;
 var userY;
 var userX;
 var result;
@@ -43,7 +44,7 @@ function operate(op, num1, num2) {
 //default display on page load
 function defaultState() {
     init = 0;
-    document.getElementById("display-scroll").innerHTML = init;
+    displayInit();
 };
 
 //clear all input
@@ -54,14 +55,15 @@ function clear1() {
     userY = null;
     result = null;
     init = 0;
-    document.getElementById("display-scroll").innerHTML = init;
+    percentCheck = null;
+    displayInit();
 };
 
 //clear default display when digit is pressed
 function clearInit() {
     if (init === 0) {
         init = null;
-        document.getElementById("display-scroll").innerHTML = init;
+        displayInit();
     };
 };
 
@@ -70,13 +72,42 @@ function clearResult() {
     if (Number.isFinite(result)) {
         result = null;
         userX = null;
-        document.getElementById("display-scroll").innerHTML = result;
+        displayResult();
     };    
 };
 
 //use to remove operator sign in display once new digit has been selected
 function clearOperator() {
+    //clear operator display once digit is pressed
+    if (displayOp === undefined || displayOp === null) {
+        displayUserX();
+    } else {
+        document.getElementsByClassName("digit").addEventListener("click", displayUserX());
+    };
+};
+
+//use to remove percentage display
+function clearPercent() {
+    if (percentCheck === undefined || percentCheck === null) {
+        displayUserX();
+    } else {
+        document.getElementsByClassName("digit").addEventListener("click", displayUserX());
+    };
+};
+
+//displays init to 'display-scroll'
+function displayInit() {
+    document.getElementById("display-scroll").innerHTML = init;
+};
+
+//displays userX to 'display-scroll'
+function displayUserX() {
     document.getElementById("display-scroll").innerHTML = userX;
+};
+
+//displays result to 'display-scroll'
+function displayResult() {
+    document.getElementById("display-scroll").innerHTML = result;
 };
 
 //add decimal if userX does not already contain one
@@ -97,16 +128,26 @@ function plusmn() {
     } else {
         userX = '-' + userX;
     };
-    document.getElementById("display-scroll").innerHTML = userX;
+    displayUserX();
 };
 
-//convert input number to percentage
-function percent(button) {
-
+function percent() {
+    if (percentCheck === undefined || percentCheck === null) {
+        percentCheck = userX / 100;
+        userX = null;
+    } else {
+        percentCheck = percentCheck / 100;
+    };
+    userY = percentCheck;
+    document.getElementById("display-scroll").innerHTML = percentCheck;
 };
 
 function operation(button) {
-    userY = userX;
+    if (percentCheck === undefined || percentCheck === null) {
+        userY = userX;
+    } else {
+        userY = percentCheck;
+    };
     userX = null;
     userOp = button.id;
     displayOp = button.value;
@@ -121,23 +162,20 @@ function digit(button) {
     } else {
         userX += button.value;
     };
-    //clear operator once digit is pressed
-    if (displayOp === undefined || displayOp === null) {
-        document.getElementById("display-scroll").innerHTML = userX;
-    } else {
-        document.getElementsByClassName("digit").addEventListener("click", clearOperator());
-    };
+    clearOperator();
+    clearPercent();
 };
 
 function decimal(button) {
     clearInit();
     clearResult();
     containsDecimal(button.value);
-    document.getElementById("display-scroll").innerHTML = userX;
+    displayUserX();
 };
 
 function equals() {
     operate(userOp, userY, userX);
     userX = result;
-    document.getElementById("display-scroll").innerHTML = result;
+    displayResult();
+    percentCheck = null;
 };
