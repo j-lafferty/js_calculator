@@ -74,14 +74,14 @@ function clearResult() {
     };    
 };
 
-//use to remove oporator sign in display once new digit has been selected
+//use to remove operator sign in display once new digit has been selected
 function clearOperator() {
     document.getElementById("display-scroll").innerHTML = userX;
 };
 
 //add decimal if userX does not already contain one
 function containsDecimal(isDecimal) {
-    //add a '0' infront of a leading decimal
+    //add a '0' in front of a leading decimal
     if (userX === undefined || userX === null) {
         userX = '0';
     };
