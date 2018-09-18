@@ -56,15 +56,18 @@ function clear1() {
 };
 //clear default display when digit is pressed
 function clearInit() {
-    init = null;
-    document.getElementById("display-scroll").innerHTML = init;
-    
+    if (init === 0) {
+        init = null;
+        document.getElementById("display-scroll").innerHTML = init;
+    };
 };
 //clear result display when digit is pressed
 function clearResult() {
-    result = null;
-    userX = null;
-    document.getElementById("display-scroll").innerHTML = result;
+    if (Number.isFinite(result)) {
+        result = null;
+        userX = null;
+        document.getElementById("display-scroll").innerHTML = result;
+    };    
 };
 //use to remove oporator sign in display once new digit has been selected
 function clearOperator() {
@@ -88,17 +91,14 @@ function operation(button) {
 };
 
 function digit(button) {
-    if (init === 0) {
-        clearInit();
-    };
-    if (Number.isFinite(result)) {
-        clearResult();
-    };
+    clearInit();
+    clearResult();
     if (userX === undefined || userX === null) {
         userX = button.value;
     } else {
         userX += button.value;
     };
+    //clear operator once digit is pressed
     if (displayOp === undefined || displayOp === null) {
         document.getElementById("display-scroll").innerHTML = userX;
     } else {
@@ -107,12 +107,9 @@ function digit(button) {
 };
 
 function decimal(button) {
-    if (init === 0) {
-        clearInit();
-    }; 
-    if (Number.isFinite(result)) {
-        clearResult();
-    };
+    clearInit();
+    clearResult();
+    //add a '0' infront of a leading decimal
     if (userX === undefined || userX === null) {
         userX = 0;
     };
