@@ -39,11 +39,13 @@ function operate(op, num1, num2) {
             break;
     };
 };
+
 //default display on page load
 function defaultState() {
     init = 0;
     document.getElementById("display-scroll").innerHTML = init;
 };
+
 //clear all input
 function clear1() {
     userOp = null;
@@ -54,6 +56,7 @@ function clear1() {
     init = 0;
     document.getElementById("display-scroll").innerHTML = init;
 };
+
 //clear default display when digit is pressed
 function clearInit() {
     if (init === 0) {
@@ -61,6 +64,7 @@ function clearInit() {
         document.getElementById("display-scroll").innerHTML = init;
     };
 };
+
 //clear result display when digit is pressed
 function clearResult() {
     if (Number.isFinite(result)) {
@@ -69,14 +73,28 @@ function clearResult() {
         document.getElementById("display-scroll").innerHTML = result;
     };    
 };
+
 //use to remove oporator sign in display once new digit has been selected
 function clearOperator() {
     document.getElementById("display-scroll").innerHTML = userX;
 };
+
+//add decimal if userX does not already contain one
+function containsDecimal(isDecimal) {
+    //add a '0' infront of a leading decimal
+    if (userX === undefined || userX === null) {
+        userX = '0';
+    };
+    if (userX.indexOf(isDecimal) === -1) {
+        userX += isDecimal;
+    };
+};
+
 //change input number to negative or positive
 function plusmn(button) {
 
 };
+
 //convert input number to percentage
 function percent(button) {
 
@@ -109,11 +127,7 @@ function digit(button) {
 function decimal(button) {
     clearInit();
     clearResult();
-    //add a '0' infront of a leading decimal
-    if (userX === undefined || userX === null) {
-        userX = 0;
-    };
-    userX += button.value;
+    containsDecimal(button.value);
     document.getElementById("display-scroll").innerHTML = userX;
 };
 
