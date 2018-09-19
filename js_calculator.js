@@ -20,7 +20,11 @@ function multiply(num1, num2) {
 };
 
 function divide(num1, num2) {
-    result = parseFloat(num1) / parseFloat(num2);
+    if (num2 == 0) {
+        result = "ERROR";
+    } else {
+        result = parseFloat(num1) / parseFloat(num2);
+    };    
 };
 
 function operate(op, num1, num2) {
