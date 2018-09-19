@@ -140,6 +140,9 @@ function percent() {
 };
 
 function operation(button) {
+    if (userX === undefined || userX === null) {
+        userX = '0';
+    }; 
     if (percentCheck === undefined || percentCheck === null) {
         userY = userX;
     } else {
