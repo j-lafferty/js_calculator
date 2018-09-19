@@ -84,6 +84,7 @@ function clearOperator() {
     } else {
         document.getElementsByClassName("digit").addEventListener("click", displayUserX());
     };
+    displayOp = null;
 };
 
 //use to remove percentage display
