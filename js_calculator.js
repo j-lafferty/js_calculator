@@ -76,6 +76,7 @@ function clearResult() {
     if (Number.isFinite(result)) {
         result = null;
         userX = null;
+        percentCheck = null;
         displayResult();
     };    
 };
@@ -89,15 +90,6 @@ function clearOperator() {
         document.getElementsByClassName("digit").addEventListener("click", displayUserX());
     };
     displayOp = null;
-};
-
-//use to remove percentage display
-function clearPercent() {
-    if (percentCheck === undefined || percentCheck === null) {
-        displayUserX();
-    } else {
-        document.getElementsByClassName("digit").addEventListener("click", displayUserX());
-    };
 };
 
 //displays init to 'display-scroll'
@@ -139,12 +131,12 @@ function plusmn() {
 function percent() {
     if (percentCheck === undefined || percentCheck === null) {
         percentCheck = userX / 100;
-        userX = null;
     } else {
         percentCheck = percentCheck / 100;
     };
-    userY = percentCheck;
-    document.getElementById("display-scroll").innerHTML = percentCheck;
+    userX = percentCheck;
+    result = percentCheck;
+    displayResult();
 };
 
 function operation(button) {
@@ -168,7 +160,6 @@ function digit(button) {
         userX += button.value;
     };
     clearOperator();
-    clearPercent();
 };
 
 function decimal(button) {
