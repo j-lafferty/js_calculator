@@ -143,11 +143,7 @@ function operation(button) {
     if (userX === undefined || userX === null) {
         userX = '0';
     }; 
-    if (percentCheck === undefined || percentCheck === null) {
-        userY = userX;
-    } else {
-        userY = percentCheck;
-    };
+    userY = userX;
     userX = null;
     userOp = button.id;
     displayOp = button.value;
