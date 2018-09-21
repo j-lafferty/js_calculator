@@ -81,9 +81,8 @@ function clearResult() {
     };    
 };
 
-//use to remove operator sign in display once new digit has been selected
+//clear operator display once digit is pressed
 function clearOperator() {
-    //clear operator display once digit is pressed
     if (displayOp === undefined || displayOp === null) {
         displayUserX();
     } else {
